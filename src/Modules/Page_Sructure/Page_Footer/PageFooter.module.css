@@ -1,0 +1,39 @@
+.pageFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+  color: var(--secondary-color);
+  justify-content: space-between;
+}
+.contents {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  align-items: end;
+}
+.appInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 0rem;
+  font-variant-caps: petite-caps;
+  height: 100%;
+}
+.contactInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  gap: 1rem;
+  font-variant-caps: petite-caps;
+  height: 100%;
+}
+.contactIcon {
+  margin-right: 0.5rem;
+}
+.separatorLine {
+  width: 99%;
+  border-top: 1px solid var(--secondary-color);
+  margin-top: 1rem;
+  margin-bottom: 0.65rem;
+}
