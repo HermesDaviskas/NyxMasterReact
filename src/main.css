@@ -22,8 +22,9 @@ body {
 :root {
   --primary-color: black;
   --secondary-color: red;
-  background-color: var(--primary-color);
+  --secondary-color-descreet: brown;
   --text-color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
 
 .pageContents {
