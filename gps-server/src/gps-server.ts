@@ -12,9 +12,9 @@ const useDummyData = process.env.USE_DUMMY_DATA === "true"; // default to false 
 const dummyData = {
   systemTime: new Date().toISOString(),
   gpsTime: "2025-04-04 12:34:50",
-  longitude: "23.7275° E",
-  latitude: "37.9838° N",
-  altitude: "127 m",
+  longitude: "23.7° E",
+  latitude: "37.9° N",
+  altitude: "100 m",
 };
 
 let latestData: any = useDummyData
