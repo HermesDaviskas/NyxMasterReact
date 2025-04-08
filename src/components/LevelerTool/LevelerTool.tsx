@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import DrawLine from "../../utilities/drawLine";
 import Module from "../../Modules/Module_Structure/Module";
 import ModuleIcon from "@mui/icons-material/GpsFixed";
-import styles from "./BaseLevelerTool.module.css";
+import styles from "./LevelerTool.module.css";
 
-const BaseLevelerTool: React.FC = () => {
+const LevelerTool: React.FC = () => {
   const GAUGE_SIZE = 100;
   const CENTER_X = GAUGE_SIZE / 2;
   const CENTER_Y = GAUGE_SIZE / 2;
@@ -15,10 +15,6 @@ const BaseLevelerTool: React.FC = () => {
   const GRID_CIRCLE_RADIUS = 11;
   const BIG_CIRCLE_RADIUS = 7;
   const SMALL_CIRCLE_RADIUS = 3;
-
-  const INDICATOR_LINE_WIDTH = 1.7;
-  const BORDER_COLOR = "red";
-  const FILL_COLOR = "transparent";
 
   const [xTiltAngle, setXTiltAngle] = useState<number | undefined>(undefined);
   const [yTiltAngle, setYTiltAngle] = useState<number | undefined>(undefined);
@@ -80,14 +76,14 @@ const BaseLevelerTool: React.FC = () => {
           x_start={CENTER_X + xOffset}
           y_start={CENTER_Y + yOffset}
           length={INDICATOR_LENGTH}
-          angle={tiltAngle}
+          angle={tiltAngle + 90}
           className={styles.indicatorLine}
         />
         <DrawLine
           x_start={CENTER_X - xOffset}
           y_start={CENTER_Y - yOffset}
           length={INDICATOR_LENGTH}
-          angle={tiltAngle - 180}
+          angle={tiltAngle - 90}
           className={styles.indicatorLine}
         />
       </>
@@ -104,34 +100,26 @@ const BaseLevelerTool: React.FC = () => {
           cx={CENTER_X}
           cy={CENTER_Y + yOffset}
           r={BIG_CIRCLE_RADIUS + 1.5}
-          fill={FILL_COLOR}
-          stroke={"black"}
-          strokeWidth={3}
+          className={styles.strokeCircle}
         />
         <circle
           cx={CENTER_X}
           cy={CENTER_Y + yOffset}
           r={BIG_CIRCLE_RADIUS}
-          fill={FILL_COLOR}
-          stroke={BORDER_COLOR}
-          strokeWidth={INDICATOR_LINE_WIDTH}
+          className={styles.indicatorCircle}
         />
 
         <circle
           cx={CENTER_X}
           cy={CENTER_Y - yOffset}
           r={SMALL_CIRCLE_RADIUS + 1.6}
-          fill={FILL_COLOR}
-          stroke={"black"}
-          strokeWidth={3}
+          className={styles.strokeCircle}
         />
         <circle
           cx={CENTER_X}
           cy={CENTER_Y - yOffset}
           r={SMALL_CIRCLE_RADIUS}
-          fill={"red"}
-          stroke={BORDER_COLOR}
-          strokeWidth={INDICATOR_LINE_WIDTH}
+          className={styles.indicatorCircle}
         />
       </>
     );
@@ -142,7 +130,8 @@ const BaseLevelerTool: React.FC = () => {
     xTilt,
     yTilt,
   }) => {
-    const displayTiltValue = (value?: number) => value ?? "No data received";
+    const displayTiltValue = (value?: number) =>
+      value !== undefined ? `${value} °` : "No data received";
     return (
       <table className={styles.table}>
         <tbody>
@@ -190,4 +179,4 @@ const BaseLevelerTool: React.FC = () => {
   );
 };
 
-export default BaseLevelerTool;
+export default LevelerTool;

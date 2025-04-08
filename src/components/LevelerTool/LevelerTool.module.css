@@ -47,3 +47,14 @@
   stroke: var(--secondary-color);
   stroke-width: 2px;
 }
+
+.strokeCircle {
+  fill: var(--primary-color);
+  stroke: var(--primary-color);
+  stroke-width: 3px;
+}
+.indicatorCircle {
+  fill: transparent;
+  stroke: var(--secondary-color);
+  stroke-width: 2px;
+}

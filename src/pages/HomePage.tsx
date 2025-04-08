@@ -1,5 +1,5 @@
 import GPSModule from "../components/GPS/GPS";
-import BaseLevelerTool from "../components/BaseLevelerTool/BaseLevelerTool";
+import LevelerTool from "../components/LevelerTool/LevelerTool";
 import Orientation from "../components/Orientation/Orientation";
 
 export default function HomePage() {
@@ -7,7 +7,7 @@ export default function HomePage() {
     <section className="pageContents h-full">
       <div className="flex flex-col h-full gap-4">
         <GPSModule />
-        <BaseLevelerTool />
+        <LevelerTool />
       </div>
       <div className="flex flex-col h-full gap-4">
         <Orientation />

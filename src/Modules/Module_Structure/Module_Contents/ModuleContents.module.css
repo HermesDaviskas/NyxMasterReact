@@ -4,4 +4,5 @@
   flex-grow: 1;
   align-items: center;
   background-color: var(--primary-color);
+  gap: 0.5rem;
 }

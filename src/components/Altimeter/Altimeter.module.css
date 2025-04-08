@@ -1,0 +1,23 @@
+.gauge {
+  background-color: transparent;
+  border: 1px dashed var(--secondary-color);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 0.5rem;
+}
+.gaugeGridLines {
+  border: 1px solid var(--secondary-color);
+  fill: transparent;
+  stroke: var(--secondary-color);
+  stroke-width: 0.7px;
+}
+.indicatorLine {
+  fill: var(--primary-color);
+  stroke: var(--secondary-color);
+  stroke-width: 2px;
+}
+.needle {
+  stroke-width: 1.5px;
+  fill: var(--primary-color);
+  stroke: var(--secondary-color);
+}

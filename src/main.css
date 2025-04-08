@@ -1,13 +1,17 @@
 @import "tailwindcss";
 
-/* Apply styling to the entire body */
-body {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  height: 100vh;
-  margin: 0;
-  padding: 0.5rem 1rem;
+/* Define custom properties (CSS variables) */
+:root {
+  --primary-color: black;
+  --secondary-color: red;
+  --secondary-color-descreet: brown;
+
+  /* --primary-color: white;
+  --secondary-color: blue;
+  --secondary-color-descreet: lightblue; */
+
+  --text-color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
 
 /* Styling for the app container */
@@ -18,13 +22,14 @@ body {
   justify-content: space-between;
 }
 
-/* Define custom properties (CSS variables) */
-:root {
-  --primary-color: black;
-  --secondary-color: red;
-  --secondary-color-descreet: brown;
-  --text-color: var(--secondary-color);
-  background-color: var(--primary-color);
+/* Apply styling to the entire body */
+body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100vh;
+  margin: 0;
+  padding: 0.5rem 1rem;
 }
 
 .pageContents {
