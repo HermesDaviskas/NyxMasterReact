@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES6", // Output to ES6 JavaScript
+    "module": "commonjs", // Use commonjs for Node.js
+    "outDir": "./dist", // Output folder for transpiled JS
+    "rootDir": "./src", // Source folder for TS files
+    "strict": true, // Enable strict mode
+    "esModuleInterop": true, // Handle imports correctly
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}

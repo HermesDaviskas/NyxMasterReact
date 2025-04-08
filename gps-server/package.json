@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "start": "tsc && node dist/gps-server.js",
+    "dev": "ts-node src/gps-server.ts"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.14.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@serialport/parser-readline": "^13.0.0",
+    "express": "^5.1.0",
+    "serialport": "^13.0.0"
+  }
+}
