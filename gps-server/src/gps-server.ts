@@ -1,6 +1,8 @@
-import express from "express";
+import express, { Request, Response } from "express";
+import cors from "cors";
 import { SerialPort } from "serialport";
 import { ReadlineParser } from "@serialport/parser-readline";
+import * as child_process from "child_process"; // For setting system time (root privileges required)
 
 const app = express();
 const port = 3001; // Backend port
@@ -8,17 +10,24 @@ const port = 3001; // Backend port
 // Use an environment variable to decide whether to use real GPS data or dummy data
 const useDummyData = process.env.USE_DUMMY_DATA === "true"; // default to false if not set
 
-// Dummy GPS data for debugging purposes
-const dummyData = {
-  systemTime: new Date().toISOString(),
-  gpsTime: "2025-04-04 12:34:50",
-  longitude: "23.7° E",
-  latitude: "37.9° N",
-  altitude: "100 m",
+// Function to generate random dummy GPS data
+const generateRandomDummyData = () => {
+  const latitude = (Math.random() * (90 - -90) + -90).toFixed(5); // Random latitude between -90 and 90
+  const longitude = (Math.random() * (180 - -180) + -180).toFixed(5); // Random longitude between -180 and 180
+  const altitude = (Math.random() * 5000).toFixed(0); // Random altitude between 0 and 5000 meters
+  const utc = new Date().toISOString().slice(11, 19).replace("T", "");
+
+  return {
+    systemTime: new Date().toISOString(),
+    gpsTime: utc,
+    longitude: `${longitude}° E`,
+    latitude: `${latitude}° N`,
+    altitude: `${altitude} m`,
+  };
 };
 
 let latestData: any = useDummyData
-  ? dummyData
+  ? generateRandomDummyData()
   : {
       systemTime: new Date().toISOString(),
       gpsTime: undefined,
@@ -66,8 +75,43 @@ if (!useDummyData) {
   });
 }
 
-app.get("/gps", (req, res) => {
+// Function to sync system time with GPS time
+const syncSystemTime = (gpsTime: string) => {
+  const formattedTime = new Date(`1970-01-01T${gpsTime}Z`); // Use the GPS time as UTC and format it
+
+  // Set the system time using the formatted GPS time (requires admin/root privileges)
+  const timeCommand = `sudo date -s "${formattedTime.toISOString()}"`;
+
+  try {
+    child_process.execSync(timeCommand); // Execute the command to set the system time
+    console.log(`System time synchronized with GPS time: ${gpsTime}`);
+  } catch (error) {
+    console.error("Failed to set system time:", error);
+  }
+};
+
+app.use(cors());
+
+// Endpoint to get GPS data
+app.get("/gps", (req: Request, res: Response) => {
+  // If using dummy data, generate a new random value each time it's requested
+  if (useDummyData) {
+    latestData = generateRandomDummyData();
+  }
+
   res.json(latestData);
+});
+
+// New endpoint to manually trigger system time synchronization
+app.get("/syncTime", (req: Request, res: Response) => {
+  if (!latestData.gpsTime) {
+    return res.status(400).json({ error: "GPS time is not available" });
+  }
+
+  // Sync the system time with GPS time
+  syncSystemTime(latestData.gpsTime);
+
+  res.json({ message: `System time synced with GPS time: ${latestData.gpsTime}` });
 });
 
 app.listen(port, () => {

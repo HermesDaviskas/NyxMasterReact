@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Compass from "../Compass/Compass";
 import Altimeter from "../Altimeter/Altimeter";
 import Module from "../../Modules/Module_Structure/Module";
-import ModuleIcon from "@mui/icons-material/GpsFixed";
+import ModuleIcon from "@mui/icons-material/Navigation";
 import styles from "./Orientation.module.css";
 
 const Orientation: React.FC = () => {
@@ -50,7 +50,7 @@ const Orientation: React.FC = () => {
   return (
     <Module
       icon={<ModuleIcon />}
-      title="Base Leveller"
+      title="Telescope Orientation"
       contents={
         <>
           <RenderAzimuthGauge azimuth={35} />

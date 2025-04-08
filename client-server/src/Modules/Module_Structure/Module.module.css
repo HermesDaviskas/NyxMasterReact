@@ -4,7 +4,18 @@
   flex-grow: 1;
   border: 0.15rem solid var(--secondary-color);
   border-radius: 1rem;
-  min-width: 15rem;
-  max-width: 15rem;
+  min-width: 18rem;
+  max-width: 18rem;
   padding: 0.65rem 1rem 1rem 1rem;
+}
+.moduleButton {
+  color: var(--secondary-color);
+  background-color: transparent;
+  border-radius: 0.5rem;
+  border: 1px solid var(--secondary-color);
+  font-weight: 600;
+  font-variant-caps: petite-caps;
+  padding: 0.25rem 0.5rem;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
 }

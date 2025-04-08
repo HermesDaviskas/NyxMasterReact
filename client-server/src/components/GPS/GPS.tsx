@@ -12,12 +12,28 @@ const GPSModule: React.FC = () => {
   const [altitude, setAltitude] = useState<string | undefined>(undefined);
 
   // Function to simulate acquiring GPS data (demo values)
-  const acquireGPSData = () => {
-    setSystemTime("2025-04-04 12:34:56");
-    setGpsTime("2025-04-04 12:34:50");
-    setLongitude("23.7275° E");
-    setLatitude("37.9838° N");
-    setAltitude("127 m");
+  const acquireGPSData = async () => {
+    try {
+      const res = await fetch("http://localhost:3001/gps");
+      const data = await res.json();
+
+      setSystemTime(data.systemTime);
+      setGpsTime(data.gpsTime);
+      setLongitude(data.longitude);
+      setLatitude(data.latitude);
+      setAltitude(data.altitude);
+    } catch (err) {
+      console.error("Failed to fetch GPS data:", err);
+    }
+  };
+
+  const syncTime = async () => {
+    try {
+      const res = await fetch("http://localhost:3001/syncTime");
+      console.log((await res.json()).message);
+    } catch (err) {
+      console.error("Failed to sync system time with GPS time:", err);
+    }
   };
 
   const PositionalTable = ({
@@ -78,9 +94,14 @@ const GPSModule: React.FC = () => {
         />
       }
       footerContents={
-        <button className={styles.button} onClick={acquireGPSData}>
-          Receive Data
-        </button>
+        <>
+          <button className={styles.button} onClick={acquireGPSData}>
+            Receive Data
+          </button>
+          <button className={styles.button} onClick={syncTime}>
+            Sync Time
+          </button>
+        </>
       }
     />
   );

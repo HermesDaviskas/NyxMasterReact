@@ -23,6 +23,7 @@
   font-weight: 600;
   font-variant-caps: petite-caps;
   padding: 0.25rem 0.5rem;
+  min-width: 50%;
   transition: background-color 0.2s ease;
   cursor: pointer;
 }

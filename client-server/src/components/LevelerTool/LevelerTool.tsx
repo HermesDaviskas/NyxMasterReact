@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DrawLine from "../../utilities/drawLine";
 import Module from "../../Modules/Module_Structure/Module";
-import ModuleIcon from "@mui/icons-material/GpsFixed";
+import ModuleIcon from "@mui/icons-material/AlignHorizontalCenter"; // alternative @mui/icons-material/Straighten
 import styles from "./LevelerTool.module.css";
 
 const LevelerTool: React.FC = () => {
