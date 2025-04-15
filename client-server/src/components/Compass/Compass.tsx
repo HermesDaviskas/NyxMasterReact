@@ -16,7 +16,6 @@ const Compass: React.FC<CompassProps> = ({ azimuth }) => {
   const NEEDLE_SIZE = 10;
   const NEEDLE_GAP = 7;
   const NEEDLE_CIRCLE_RADIUS = 40 / INNER_CIRCLE_GAP;
-
   const DIRECTIONS = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
 
   const drawAxis = () => {
@@ -89,7 +88,7 @@ const Compass: React.FC<CompassProps> = ({ azimuth }) => {
     return minorMarks;
   };
 
-  const drawNeedle = (angle_deg: number) => {
+  const renderNeedle = (angle_deg: number) => {
     // Calculate the angle for the needle head
     const angle_rad = angle_deg * (Math.PI / 180);
 
@@ -119,7 +118,7 @@ const Compass: React.FC<CompassProps> = ({ azimuth }) => {
       {drawAxis()}
       {drawMarks()}
       {drawMinorMarks()}
-      {azimuth !== undefined && drawNeedle(azimuth)}
+      {azimuth !== undefined && renderNeedle(azimuth)}
     </svg>
   );
 };

@@ -1,0 +1,24 @@
+.gauge {
+  background-color: transparent;
+  /* border: 1px dashed var(--secondary-color); */
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 0.5rem;
+}
+.gridOuterCircle {
+  fill: transparent;
+  stroke: var(--secondary-color);
+  stroke-width: 0.7px;
+  stroke-dasharray: 1 1;
+}
+.gaugeGridLines {
+  fill: transparent;
+  stroke: var(--secondary-color);
+  stroke-width: 0.7px;
+  stroke-dasharray: 5 2;
+}
+.indicatorCircle {
+  fill: var(--secondary-color);
+  stroke: var(--secondary-color);
+  stroke-width: 1px;
+}

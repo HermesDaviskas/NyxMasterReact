@@ -30,31 +30,3 @@
   color: var(--primary-color);
   background-color: var(--secondary-color);
 }
-.gauge {
-  background-color: transparent;
-  border: 1px dashed var(--secondary-color);
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  padding: 0.5rem;
-}
-.gaugeGridLines {
-  fill: transparent;
-  stroke: var(--secondary-color);
-  stroke-width: 0.7px;
-  stroke-dasharray: 4 4;
-}
-.indicatorLine {
-  stroke: var(--secondary-color);
-  stroke-width: 2px;
-}
-
-.strokeCircle {
-  fill: var(--primary-color);
-  stroke: var(--primary-color);
-  stroke-width: 3px;
-}
-.indicatorCircle {
-  fill: transparent;
-  stroke: var(--secondary-color);
-  stroke-width: 2px;
-}
